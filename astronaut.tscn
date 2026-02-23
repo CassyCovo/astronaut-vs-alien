@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3tu3ioqifr6m"]
+
+[ext_resource type="Script" uid="uid://pp6xwxiuxfu6" path="res://astronaut.gd" id="1_l76db"]
+[ext_resource type="Texture2D" uid="uid://caacfippc5xnp" path="res://square_up.png" id="2_l76db"]
+[ext_resource type="Texture2D" uid="uid://doxhwnjw4x60e" path="res://kick.png" id="3_pw13x"]
+[ext_resource type="Texture2D" uid="uid://ydyhanegg2dp" path="res://block.png" id="4_6cnut"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l76db"]
+radius = 137.0
+height = 324.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roq07"]
+size = Vector2(31, 20)
+
+[node name="Astronaut" type="CharacterBody2D"]
+script = ExtResource("1_l76db")
+idle_texture = ExtResource("2_l76db")
+kick_texture = ExtResource("3_pw13x")
+block_texture = ExtResource("4_6cnut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-29.999998, 129.99998)
+scale = Vector2(0.17527647, 0.1697648)
+texture = ExtResource("2_l76db")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27, 150)
+shape = SubResource("CapsuleShape2D_l76db")
+
+[node name="KickHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KickHitbox"]
+position = Vector2(101.5, 256)
+shape = SubResource("RectangleShape2D_roq07")
+
+[connection signal="area_entered" from="KickHitbox" to="." method="_on_kick_hitbox_area_entered"]

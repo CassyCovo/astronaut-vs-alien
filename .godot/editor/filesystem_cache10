@@ -1,0 +1,28 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1771817024
+alien.gd::GDScript::6872474983284969641::1771433032::0::1::::<>CharacterBody2D<><>0<>0<><>::
+alien.tscn::PackedScene::1617262504348515593::1771432694::0::1::::<><><>0<>0<><>::uid://c46cwnxffp3pt::::res://alien.gd<>uid://dj3srhh7q75gr::::res://alien_dummy.png<>uid://c8t2olmuq6ln4::::res://hit_dummy.png<>uid://crwafmam4uu0r::::res://block_dummy.png<>uid://oruuia24b0hn::::res://supermove_dummy.png
+alien_dummy.png::CompressedTexture2D::7849887865255137429::1770671538::1770671538::1::::<><><>0<>0<>995b3e06902262dbf0031033a0451218<>res://.godot/imported/alien_dummy.png-f298f4cd6d7864154ede4f4a07c952db.ctex::
+astronaut.gd::GDScript::1085722812352280723::1771402328::0::1::::<>CharacterBody2D<><>0<>0<><>::
+astronaut.tscn::PackedScene::4392196267521747606::1771402349::0::1::::<><><>0<>0<><>::uid://pp6xwxiuxfu6::::res://astronaut.gd<>uid://caacfippc5xnp::::res://square_up.png<>uid://doxhwnjw4x60e::::res://kick.png<>uid://ydyhanegg2dp::::res://block.png
+block.png::CompressedTexture2D::1692195109231170225::1770670040::1770670040::1::::<><><>0<>0<>3fc0c8635a18c4ed54579d991416cf32<>res://.godot/imported/block.png-b7fed0a755ada244f74f9622a987e81f.ctex::
+block_dummy.png::CompressedTexture2D::6011477579656582819::1771432581::1771432581::1::::<><><>0<>0<>6ac50ff66ed909f9aa924cc564619525<>res://.godot/imported/block_dummy.png-744c651ede0d8a7ac34076a91ae5ee30.ctex::
+hit_dummy.png::CompressedTexture2D::7129961341913595643::1771432601::1771432601::1::::<><><>0<>0<>67c20ef442ed883b4d0eff8ce64aa518<>res://.godot/imported/hit_dummy.png-6ee09e45d97eada6b4ac0ca789ee803e.ctex::
+icon.svg::CompressedTexture2D::5794442870052159330::1769396120::1769396132::1::::<><><>0<>0<>08cceb0a18ad0b9e16c8a1e78c209a31<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+kick.png::CompressedTexture2D::8189851554516469722::1770669075::1770669062::1::::<><><>0<>0<>58e5ea8c27a9959b850ecff0442a9321<>res://.godot/imported/kick.png-5f579b2699a2dc59bb5a76048f2cfabd.ctex::
+main.gd::GDScript::8645725932607709200::1771433192::0::1::::<>Node2D<><>0<>0<><>::
+main.tscn::PackedScene::829369552765178791::1771433192::0::1::::<><><>0<>0<><>::uid://b3tu3ioqifr6m::::res://astronaut.tscn<>uid://dvgb3wppl7e21::::res://main.gd<>uid://c1kmqqbnr02us::::res://space_background_2.png<>uid://bywjck03ap04m::::res://Square_Up 2.png<>uid://xbocvg03rrkj::::res://alien.tscn
+space_background_2.png::CompressedTexture2D::6619153098664117214::1770612340::1770612362::1::::<><><>0<>0<>70373540e66ecf2767f362a6e4016271<>res://.godot/imported/space_background_2.png-fe882a30065659bdabdb29568a23d024.ctex::
+Square_Up 2.png::CompressedTexture2D::4116919831244324482::1771431437::1771431438::1::::<><><>0<>0<>057d69e3145c85895f95ae4014d0da97<>res://.godot/imported/Square_Up 2.png-786da0345a65d4031e6cfd196b47cfb3.ctex::
+square_up.png::CompressedTexture2D::4772972174385537109::1770666724::1770666724::1::::<><><>0<>0<>f4d72f7f089f80d67827f83498f7f8a0<>res://.godot/imported/square_up.png-04fb29ab209015faa59b219a63ecb4dd.ctex::
+supermove_dummy.png::CompressedTexture2D::1018988709937276567::1771432556::1771432556::1::::<><><>0<>0<>916817c720d16739e1e07b9227833b84<>res://.godot/imported/supermove_dummy.png-9eb7f5456df57aaf113eacd4b28486cd.ctex::
+::res://addons/::1771440332
+::res://addons/godot-git-plugin/::1771440332
+git_plugin.gdextension::GDExtension::1423397257005505165::1771440332::0::1::::<><><>0<>0<><>::
+THIRDPARTY.md::TextFile::-1::1771440332::0::1::::<><><>0<>0<><>::
+::res://addons/godot-git-plugin/linux/::1771440332
+::res://addons/godot-git-plugin/macos/::1771440332
+::res://addons/godot-git-plugin/windows/::1771440332
+::res://godot-git-plugin-v3.2.1/::1771440496
+::res://godot-git-plugin-v3.2.1/addons/::1771440496
+::res://godot-git-plugin-v3.2.1/addons/godot-git-plugin/::1771440496

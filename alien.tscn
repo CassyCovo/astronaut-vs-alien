@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://xbocvg03rrkj"]
+
+[ext_resource type="Script" uid="uid://c46cwnxffp3pt" path="res://alien.gd" id="1_0cgv7"]
+[ext_resource type="Texture2D" uid="uid://dj3srhh7q75gr" path="res://alien_dummy.png" id="1_816kv"]
+[ext_resource type="Texture2D" uid="uid://c8t2olmuq6ln4" path="res://hit_dummy.png" id="3_g5epv"]
+[ext_resource type="Texture2D" uid="uid://crwafmam4uu0r" path="res://block_dummy.png" id="4_1tq5k"]
+[ext_resource type="Texture2D" uid="uid://oruuia24b0hn" path="res://supermove_dummy.png" id="5_17d3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uphwn"]
+size = Vector2(179, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cgv7"]
+size = Vector2(183, 275)
+
+[node name="alien" type="CharacterBody2D"]
+script = ExtResource("1_0cgv7")
+tex_idle = ExtResource("1_816kv")
+tex_hit = ExtResource("3_g5epv")
+tex_block = ExtResource("4_1tq5k")
+tex_super = ExtResource("5_17d3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_816kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_uphwn")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["alien_hurtbox"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_0cgv7")

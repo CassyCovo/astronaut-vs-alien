@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://l20uiidgj46n"]
+
+[ext_resource type="PackedScene" uid="uid://b3tu3ioqifr6m" path="res://astronaut.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dvgb3wppl7e21" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c1kmqqbnr02us" path="res://space_background_2.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bywjck03ap04m" path="res://Square_Up 2.png" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://xbocvg03rrkj" path="res://alien.tscn" id="4_1bvp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(2507, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(177, 267)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_lquwl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 98)
+
+[node name="Astronaut" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
+z_index = 10
+position = Vector2(-372, -19)
+idle_texture = ExtResource("3_7mycd")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(8, 78)
+scale = Vector2(0.70356923, 0.67329913)
+texture = ExtResource("2_0xm2m")
+metadata/_edit_lock_ = true
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(184.5, 347)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="alien" parent="CharacterBody2D" instance=ExtResource("4_1bvp3")]
+position = Vector2(455, 129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(455.5, 129.5)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="AlienHPBar" type="ProgressBar" parent="UI"]
+offset_right = 4.0
+offset_bottom = 27.0
+value = 100.0
