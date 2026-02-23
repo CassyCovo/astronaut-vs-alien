@@ -40,10 +40,10 @@ shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="alien" parent="CharacterBody2D" instance=ExtResource("4_1bvp3")]
 position = Vector2(455, 129)
+astronaut_path = NodePath("../../Astronaut")
 
 [node name="ChaseTimer" type="Timer" parent="CharacterBody2D/alien"]
 wait_time = 1.5
-one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
