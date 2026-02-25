@@ -4,6 +4,13 @@ extends CharacterBody2D
 @export var astronaut_path: NodePath
 @export var chase_duration: float = 1.2
 
+# ----------------------------
+# HEALTH (NEW)
+# ----------------------------
+@export var max_hp: int = 100
+var hp: int
+signal hp_changed(current_hp: int)
+
 @onready var chase_timer: Timer = $ChaseTimer
 
 var astronaut: Node2D = null
@@ -12,6 +19,11 @@ var chase_time_left: float = 0.0
 
 
 func _ready() -> void:
+	# HEALTH init (NEW)
+	hp = max_hp
+	hp_changed.emit(hp)
+	print("Alien ready. HP:", hp, "/", max_hp)
+
 	astronaut = get_node_or_null(astronaut_path) as Node2D
 	if astronaut == null:
 		push_error("Alien: Astronaut Path not assigned (or wrong).")
@@ -48,3 +60,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
+
+# ----------------------------
+# TAKE DAMAGE (NEW)
+# ----------------------------
+func take_damage(amount: int) -> void:
+	hp = max(hp - amount, 0)
+	hp_changed.emit(hp)
+	print("Alien took", amount, "damage. HP:", hp, "/", max_hp)
+
+	if hp == 0:
+		print("Alien defeated!")
+		# Optional:
+		# queue_free()

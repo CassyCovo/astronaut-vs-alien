@@ -9,6 +9,13 @@ extends CharacterBody2D
 @export var block_texture: Texture2D
 @export var kick_duration := 0.3
 
+# ----------------------------
+# HEALTH (NEW)
+# ----------------------------
+@export var max_hp: int = 100
+var hp: int
+signal hp_changed(current_hp: int)
+
 var is_kicking := false
 var hit_applied_this_kick := false
 
@@ -18,6 +25,11 @@ var hit_applied_this_kick := false
 
 func _ready() -> void:
 	print("Astronaut ready")
+
+	# HEALTH init (NEW)
+	hp = max_hp
+	hp_changed.emit(hp)
+
 	# Hitbox OFF until we kick
 	kick_hitbox.monitoring = false
 	kick_hitbox.monitorable = false
@@ -36,9 +48,6 @@ func _physics_process(delta: float) -> void:
 		sprite.texture = block_texture
 		move_and_slide()
 		return
-
-	# --- If we were blocking and released, return to idle ---
-	# (this is handled naturally by falling through and setting idle texture)
 
 	# --- KICK STATE (freeze while kicking) ---
 	if is_kicking:
@@ -73,15 +82,29 @@ func start_kick() -> void:
 
 	kick_hitbox.monitorable = true
 	kick_hitbox.monitoring = true
-	print("KICK pressed, hitbox ON")
+	# print("KICK pressed, hitbox ON")
 
 	await get_tree().create_timer(kick_duration).timeout
 
 	kick_hitbox.monitoring = false
 	kick_hitbox.monitorable = false
-	print("Kick finished, hitbox OFF")
+	#print("Kick finished, hitbox OFF")
 
 	is_kicking = false
+
+
+# ----------------------------
+# TAKE DAMAGE (NEW)
+# ----------------------------
+func take_damage(amount: int) -> void:
+	# optional: reduce damage if blocking right now
+	if Input.is_action_pressed("block") and not is_kicking:
+		amount = int(amount * 0.3)  # 70% reduction while blocking
+
+	hp -= amount
+	hp = max(hp, 0)
+	hp_changed.emit(hp)
+	print("Astronaut HP:", hp)
 
 
 # IMPORTANT: enemy "Hurtbox" is an Area2D
