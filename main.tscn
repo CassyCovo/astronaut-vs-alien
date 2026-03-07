@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://l20uiidgj46n"]
+[gd_scene load_steps=7 format=3 uid="uid://l20uiidgj46n"]
 
 [ext_resource type="PackedScene" uid="uid://b3tu3ioqifr6m" path="res://astronaut.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dvgb3wppl7e21" path="res://main.gd" id="1_lquwl"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(2507, 162)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
-size = Vector2(177, 267)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
@@ -28,9 +25,9 @@ z_index = -10
 position = Vector2(8, 78)
 scale = Vector2(0.70356923, 0.67329913)
 texture = ExtResource("2_0xm2m")
-metadata/_edit_lock_ = true
 
 [node name="floor" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2(184.5, 347)
@@ -40,15 +37,10 @@ shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="alien" parent="CharacterBody2D" instance=ExtResource("4_1bvp3")]
 position = Vector2(455, 129)
-astronaut_path = NodePath("../../Astronaut")
 
 [node name="ChaseTimer" type="Timer" parent="CharacterBody2D/alien"]
 wait_time = 1.5
 autostart = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(455.5, 129.5)
-shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
