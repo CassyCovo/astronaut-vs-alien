@@ -1,34 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3tu3ioqifr6m"]
+[gd_scene load_steps=10 format=3 uid="uid://b3tu3ioqifr6m"]
 
 [ext_resource type="Script" uid="uid://pp6xwxiuxfu6" path="res://astronaut.gd" id="1_l76db"]
-[ext_resource type="Texture2D" uid="uid://caacfippc5xnp" path="res://square_up.png" id="2_l76db"]
-[ext_resource type="Texture2D" uid="uid://doxhwnjw4x60e" path="res://kick.png" id="3_pw13x"]
+[ext_resource type="Texture2D" uid="uid://bywjck03ap04m" path="res://Square_Up 2.png" id="2_m3ec0"]
+[ext_resource type="Texture2D" uid="uid://5wxpcpckeqdt" path="res://astro_kicking.png" id="3_pw13x"]
 [ext_resource type="Texture2D" uid="uid://ydyhanegg2dp" path="res://block.png" id="4_6cnut"]
+[ext_resource type="Texture2D" uid="uid://cc8rd7be3tgnd" path="res://astro_jump.png" id="5_d5k3e"]
+[ext_resource type="Texture2D" uid="uid://wq60r5y4kccb" path="res://astro_double_jump.png" id="6_m3ec0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l76db"]
-radius = 137.0
-height = 324.0
+radius = 55.0
+height = 220.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roq07"]
 size = Vector2(31, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw13x"]
-radius = 148.0
-height = 302.0
+radius = 151.0
+height = 370.0
 
 [node name="Astronaut" type="CharacterBody2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_l76db")
-idle_texture = ExtResource("2_l76db")
+idle_texture = ExtResource("2_m3ec0")
 kick_texture = ExtResource("3_pw13x")
 block_texture = ExtResource("4_6cnut")
+jump_texture = ExtResource("5_d5k3e")
+double_jump_texture = ExtResource("6_m3ec0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-29.999998, 129.99998)
-scale = Vector2(0.17527647, 0.1697648)
-texture = ExtResource("2_l76db")
+position = Vector2(-28.258446, 141.94936)
+scale = Vector2(0.17357574, 0.1610171)
+texture = ExtResource("2_m3ec0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-27, 150)
+position = Vector2(-22, 219)
 shape = SubResource("CapsuleShape2D_l76db")
 
 [node name="KickHitbox" type="Area2D" parent="."]
@@ -42,7 +47,7 @@ shape = SubResource("RectangleShape2D_roq07")
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-28, 156)
+position = Vector2(-24, 177)
 shape = SubResource("CapsuleShape2D_pw13x")
 
 [connection signal="area_entered" from="KickHitbox" to="." method="_on_kick_hitbox_area_entered"]

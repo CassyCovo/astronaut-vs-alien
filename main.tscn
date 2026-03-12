@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://l20uiidgj46n"]
+[gd_scene load_steps=8 format=3 uid="uid://l20uiidgj46n"]
 
 [ext_resource type="PackedScene" uid="uid://b3tu3ioqifr6m" path="res://astronaut.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dvgb3wppl7e21" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c1kmqqbnr02us" path="res://space_background_2.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cto7oxdiuppii" path="res://astronau_losing_dummy.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bywjck03ap04m" path="res://Square_Up 2.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://xbocvg03rrkj" path="res://alien.tscn" id="4_1bvp3"]
 
@@ -10,6 +11,7 @@
 size = Vector2(2507, 162)
 
 [node name="Main" type="Node2D"]
+position = Vector2(583, 225)
 script = ExtResource("1_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -22,8 +24,8 @@ idle_texture = ExtResource("3_7mycd")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
-position = Vector2(8, 78)
-scale = Vector2(0.70356923, 0.67329913)
+position = Vector2(-5.9999924, 11)
+scale = Vector2(0.84754986, 0.8564771)
 texture = ExtResource("2_0xm2m")
 
 [node name="floor" type="StaticBody2D" parent="."]
@@ -32,8 +34,10 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2(184.5, 347)
 shape = SubResource("RectangleShape2D_0xm2m")
+metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-218, -51)
 
 [node name="alien" parent="CharacterBody2D" instance=ExtResource("4_1bvp3")]
 position = Vector2(455, 129)
@@ -44,29 +48,72 @@ autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="MidFightComic" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ComicPage" type="TextureRect" parent="UI/MidFightComic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.5138889
+anchor_top = -0.35493827
+anchor_right = 0.4861111
+anchor_bottom = 0.64506173
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7mycd")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueButton" type="Button" parent="UI/MidFightComic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4314236
+anchor_top = 0.33487654
+anchor_right = 0.4314236
+anchor_bottom = 0.33487654
+offset_left = 455.0
+offset_top = 297.0
+offset_right = 556.0
+offset_bottom = 328.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.2901961, 1)
+text = "Continue >>"
+metadata/_edit_use_anchors_ = true
+
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 583.0
+offset_top = 225.0
+offset_right = 623.0
+offset_bottom = 265.0
+metadata/_edit_use_anchors_ = true
 
 [node name="AlienHPBar" type="ProgressBar" parent="UI/Control"]
-custom_minimum_size = Vector2(300, 30)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 191.0
-offset_top = -201.0
-offset_right = 491.0
-offset_bottom = -140.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-value = 100.0
-
-[node name="AstronautHPBar" type="ProgressBar" parent="UI/Control"]
-layout_mode = 0
+anchors_preset = -1
+anchor_left = 14.575
+anchor_top = -3.85
+anchor_right = 16.125
+anchor_bottom = -3.85
 offset_right = 4.0
 offset_bottom = 27.0
-value = 100.0
-show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AstronautHPBar" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -12.125
+anchor_top = -3.875
+anchor_right = -10.475
+anchor_bottom = -3.875
+offset_right = 4.0
+offset_bottom = 27.0
+metadata/_edit_use_anchors_ = true
