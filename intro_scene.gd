@@ -5,13 +5,13 @@ extends Control
 
 var full_text := """Year 2347.
 
-Humanity has entered a new era of deep space exploration. Astronaut explorers travel across the galaxy searching for new worlds and valuable resources.
+Humanity has entered a new era of deep space exploration. Astronaut explorers travel across the galaxy  searching for new worlds and valuable resources.
 
-[Astronaut Name] is currently on a solo expedition, charting unknown regions far from Earth.
+Covo is currently on a solo expedition, charting unknown regions far from Earth.
 
-During the journey, the ship detects a powerful energy signal coming from a distant planet known as [Planet Name].
+During the journey, the ship detects a powerful energy signal coming from a distant planet unknown planet.
 
-Believing the signal may lead to a rare and valuable resource known as [Crystal Name], the astronaut decides to investigate.
+Believing the signal may lead to a rare and valuable resource known as a resource crystal, the astronaut decides to investigate.
 
 Unaware that something on the planet is already waiting..."""
 

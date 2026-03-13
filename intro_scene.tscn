@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhy2g8vp37f1c"]
 
 [ext_resource type="Script" uid="uid://dcmt3e6kxl6xw" path="res://intro_scene.gd" id="1_x3ncd"]
-[ext_resource type="Texture2D" uid="uid://c1kmqqbnr02us" path="res://space_background_2.png" id="2_2glrg"]
+[ext_resource type="Texture2D" uid="uid://ytdk8yry1reb" path="res://Untitled_Artwork 8.png" id="2_x3ncd"]
 
 [node name="IntroScene" type="Control"]
 layout_mode = 3
@@ -21,29 +21,29 @@ offset_right = 1610.0
 offset_bottom = 1323.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2glrg")
+texture = ExtResource("2_x3ncd")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 199.0
-offset_top = 156.0
-offset_right = 1125.0
-offset_bottom = 401.0
+offset_left = 78.0
+offset_top = 155.0
+offset_right = 1047.0
+offset_bottom = 412.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 1, 0.023529412, 1)
 text = "Year 2347.
 
-Humanity has entered a new era of deep space exploration. Astronaut explorers travel across the galaxy searching for new worlds and valuable resources.
+Humanity has entered a new era of deep space exploration. Astronaut explorers travel across the galaxy  searching for new worlds and valuable resources.
 
-[Astronaut Name] is currently on a solo expedition, charting unknown regions far from Earth.
+Covo is currently on a solo expedition, charting unknown regions far from Earth.
 
-During the journey, the ship detects a powerful energy signal coming from a distant planet known as [Planet Name].
+During the journey, the ship detects a powerful energy signal coming from a distant planet unknown planet.
 
-Believing the signal may lead to a rare and valuable resource known as [Crystal Name], the astronaut decides to investigate.
+Believing the signal may lead to a rare and valuable resource known as a resource crystal, the astronaut decides to investigate.
 
 Unaware that something on the planet is already waiting..."
 scroll_following = true
@@ -55,9 +55,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 990.0
+offset_left = 959.0
 offset_top = 466.0
-offset_right = 1091.0
+offset_right = 1060.0
 offset_bottom = 497.0
 grow_horizontal = 0
 grow_vertical = 0

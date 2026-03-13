@@ -31,11 +31,15 @@ var did_double_jump := false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var kick_hitbox: Area2D = $KickHitbox
 
+var alien: Node2D
+
 
 func _ready() -> void:
 	hp = max_hp
 	hp_changed.emit(hp)
 	jumps_left = max_jumps
+
+	alien = get_tree().get_first_node_in_group("alien")
 
 	kick_hitbox.monitoring = false
 	kick_hitbox.monitorable = false
@@ -44,6 +48,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+
+	# Always face the alien
+	if alien != null:
+		var dx = alien.global_position.x - global_position.x
+		sprite.flip_h = dx < 0
+
 	# gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -52,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		jumps_left = max_jumps
 		did_double_jump = false
 
-	# block (freeze while held)
+	# block
 	if Input.is_action_pressed("block") and not is_kicking:
 		velocity.x = 0
 		sprite.texture = block_texture
@@ -68,11 +78,11 @@ func _physics_process(delta: float) -> void:
 		handle_regen(delta)
 		return
 
-	# horizontal
+	# horizontal movement
 	var direction := Input.get_axis("move_left", "move_right")
 	velocity.x = direction * speed
 
-	# jump / double jump
+	# jump
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_velocity
@@ -85,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			did_double_jump = true
 			sprite.texture = double_jump_texture
 
-	# choose texture when not blocking/kicking
+	# idle/jump textures
 	if is_on_floor():
 		sprite.texture = idle_texture
 	elif did_double_jump:
@@ -117,6 +127,7 @@ func handle_regen(delta: float) -> void:
 		hp += regen_amount
 		hp = min(hp, max_hp)
 		hp_changed.emit(hp)
+
 		print("Astronaut regen HP:", str(hp) + "/" + str(max_hp))
 
 
@@ -125,6 +136,7 @@ func start_kick() -> void:
 	hit_applied_this_kick = false
 
 	sprite.texture = kick_texture
+
 	kick_hitbox.monitorable = true
 	kick_hitbox.monitoring = true
 
@@ -132,11 +144,13 @@ func start_kick() -> void:
 
 	kick_hitbox.monitoring = false
 	kick_hitbox.monitorable = false
+
 	is_kicking = false
 
 
 func take_damage(amount: int) -> void:
-	# If blocking, take NO damage and print
+
+	# block prevents damage
 	if Input.is_action_pressed("block") and not is_kicking:
 		print("Astronaut BLOCKED")
 		return
@@ -146,18 +160,26 @@ func take_damage(amount: int) -> void:
 
 	hp -= amount
 	hp = max(hp, 0)
+
 	hp_changed.emit(hp)
+
 	print("Astronaut HP:", str(hp) + "/" + str(max_hp))
 
 
 func _on_kick_hitbox_area_entered(area: Area2D) -> void:
+
 	if not is_kicking:
 		return
+
 	if hit_applied_this_kick:
 		return
 
-	if area.name == "Hurtbox":
+	var target = area.get_parent()
+
+	# prevent hitting yourself
+	if target == self:
+		return
+
+	if target != null and target.has_method("take_damage"):
 		hit_applied_this_kick = true
-		var alien = area.get_parent()
-		if alien != null and alien.has_method("take_damage"):
-			alien.take_damage(10)
+		target.take_damage(10)

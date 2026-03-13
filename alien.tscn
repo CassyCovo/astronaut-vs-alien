@@ -1,35 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://xbocvg03rrkj"]
+[gd_scene load_steps=8 format=3 uid="uid://xbocvg03rrkj"]
 
 [ext_resource type="Script" uid="uid://c46cwnxffp3pt" path="res://alien.gd" id="1_0cgv7"]
-[ext_resource type="Texture2D" uid="uid://ttkkhk3304xy" path="res://alien_square_up.png" id="2_uphwn"]
+[ext_resource type="Texture2D" uid="uid://b81u5gu5b664v" path="res://Untitled_Artwork 6.png" id="3_uphwn"]
+[ext_resource type="Texture2D" uid="uid://1vr71b2fileo" path="res://Untitled_Artwork 1.png" id="3_wk2vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uphwn"]
-size = Vector2(854.2859, 611.4287)
+size = Vector2(854.2859, 671.4288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cgv7"]
-size = Vector2(848.57166, 634.28577)
+size = Vector2(848.57166, 668.57166)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cgv7"]
 radius = 451.42856
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk2vo"]
-size = Vector2(108.5, 40)
+size = Vector2(1345.7148, 222.85724)
 
 [node name="alien" type="CharacterBody2D"]
 position = Vector2(-18.999998, 24.999992)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("1_0cgv7")
-idle_texture = ExtResource("2_uphwn")
-attack_texture = ExtResource("2_uphwn")
+idle_texture = ExtResource("3_uphwn")
+attack_texture = ExtResource("3_wk2vo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-15.714363, 77.14294)
-scale = Vector2(0.6989397, 0.77389675)
-texture = ExtResource("2_uphwn")
+position = Vector2(-44.285744, 22.857273)
+scale = Vector2(0.7268414, 0.8136374)
+texture = ExtResource("3_uphwn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64.28558, 177.1427)
-scale = Vector2(0.9999992, 0.9999992)
+position = Vector2(64.28558, 147.14265)
+scale = Vector2(0.99999905, 0.99999905)
 shape = SubResource("RectangleShape2D_uphwn")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["alien_hurtbox"]]
@@ -38,22 +39,22 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(64.28564, 145.71419)
-scale = Vector2(0.9999995, 0.9999995)
+position = Vector2(68.57144, 122.857086)
+scale = Vector2(0.99999934, 0.99999934)
 shape = SubResource("RectangleShape2D_0cgv7")
 
 [node name="AttackRange" type="Area2D" parent="."]
 position = Vector2(-8.571434, -111.428535)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-position = Vector2(74.28572, 171.42856)
+position = Vector2(42.857147, 140.00003)
 shape = SubResource("CircleShape2D_0cgv7")
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(-482.89276, 357.14288)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(1.4285316, 82.85716)
+scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("RectangleShape2D_wk2vo")
 
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]

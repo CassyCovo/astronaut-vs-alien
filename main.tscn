@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dvgb3wppl7e21" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c1kmqqbnr02us" path="res://space_background_2.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cto7oxdiuppii" path="res://astronau_losing_dummy.png" id="2_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bywjck03ap04m" path="res://Square_Up 2.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://xbocvg03rrkj" path="res://alien.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://c7fpeg5m8ivol" path="res://Untitled_Artwork 2.png" id="5_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(2507, 162)
@@ -20,7 +20,6 @@ position = Vector2(-2, 98)
 [node name="Astronaut" parent="." groups=["player"] instance=ExtResource("1_ig7tw")]
 z_index = 10
 position = Vector2(-372, -19)
-idle_texture = ExtResource("3_7mycd")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -10
@@ -39,8 +38,9 @@ metadata/_edit_lock_ = true
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-218, -51)
 
-[node name="alien" parent="CharacterBody2D" instance=ExtResource("4_1bvp3")]
+[node name="alien" parent="CharacterBody2D" groups=["alien"] instance=ExtResource("4_1bvp3")]
 position = Vector2(455, 129)
+block_texture = ExtResource("5_7mycd")
 
 [node name="ChaseTimer" type="Timer" parent="CharacterBody2D/alien"]
 wait_time = 1.5
@@ -87,6 +87,14 @@ theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.2901961, 1)
 text = "Continue >>"
 metadata/_edit_use_anchors_ = true
 
+[node name="ComicTitle" type="Label" parent="UI/MidFightComic"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 239.0
+offset_right = 683.0
+offset_bottom = 281.0
+text = "ALIEN DEFEATED"
+
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
@@ -99,21 +107,25 @@ metadata/_edit_use_anchors_ = true
 [node name="AlienHPBar" type="ProgressBar" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 14.575
-anchor_top = -3.85
-anchor_right = 16.125
-anchor_bottom = -3.85
-offset_right = 4.0
-offset_bottom = 27.0
+anchor_left = 20.35
+anchor_top = -4.675
+anchor_right = 21.725
+anchor_bottom = -4.675
+offset_left = -480.0
+offset_top = 40.0
+offset_right = -476.0
+offset_bottom = 70.0
+grow_horizontal = 0
+value = 100.0
 metadata/_edit_use_anchors_ = true
 
 [node name="AstronautHPBar" type="ProgressBar" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -12.125
-anchor_top = -3.875
-anchor_right = -10.475
-anchor_bottom = -3.875
+anchor_left = -10.6
+anchor_top = -3.75
+anchor_right = -8.95
+anchor_bottom = -3.625
 offset_right = 4.0
 offset_bottom = 27.0
 metadata/_edit_use_anchors_ = true

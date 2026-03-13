@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://pp6xwxiuxfu6" path="res://astronaut.gd" id="1_l76db"]
 [ext_resource type="Texture2D" uid="uid://bywjck03ap04m" path="res://Square_Up 2.png" id="2_m3ec0"]
 [ext_resource type="Texture2D" uid="uid://5wxpcpckeqdt" path="res://astro_kicking.png" id="3_pw13x"]
-[ext_resource type="Texture2D" uid="uid://ydyhanegg2dp" path="res://block.png" id="4_6cnut"]
+[ext_resource type="Texture2D" uid="uid://7gcjo8fge61m" path="res://Untitled_Artwork.png" id="4_d5k3e"]
 [ext_resource type="Texture2D" uid="uid://cc8rd7be3tgnd" path="res://astro_jump.png" id="5_d5k3e"]
-[ext_resource type="Texture2D" uid="uid://wq60r5y4kccb" path="res://astro_double_jump.png" id="6_m3ec0"]
+[ext_resource type="Texture2D" uid="uid://c0kffqejp31kp" path="res://Untitled_Artwork 3.png" id="6_m3ec0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l76db"]
-radius = 55.0
-height = 220.0
+radius = 87.0
+height = 262.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roq07"]
-size = Vector2(31, 20)
+size = Vector2(394, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw13x"]
 radius = 151.0
@@ -23,7 +23,7 @@ position = Vector2(0, -1)
 script = ExtResource("1_l76db")
 idle_texture = ExtResource("2_m3ec0")
 kick_texture = ExtResource("3_pw13x")
-block_texture = ExtResource("4_6cnut")
+block_texture = ExtResource("4_d5k3e")
 jump_texture = ExtResource("5_d5k3e")
 double_jump_texture = ExtResource("6_m3ec0")
 
@@ -33,7 +33,7 @@ scale = Vector2(0.17357574, 0.1610171)
 texture = ExtResource("2_m3ec0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-22, 219)
+position = Vector2(-24, 188)
 shape = SubResource("CapsuleShape2D_l76db")
 
 [node name="KickHitbox" type="Area2D" parent="."]
@@ -41,13 +41,15 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KickHitbox"]
-position = Vector2(101.5, 256)
+position = Vector2(-15, 273)
 shape = SubResource("RectangleShape2D_roq07")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-24, 177)
+position = Vector2(-23, 139)
 shape = SubResource("CapsuleShape2D_pw13x")
 
 [connection signal="area_entered" from="KickHitbox" to="." method="_on_kick_hitbox_area_entered"]
