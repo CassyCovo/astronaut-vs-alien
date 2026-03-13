@@ -18,7 +18,7 @@ size = Vector2(31, 20)
 radius = 151.0
 height = 370.0
 
-[node name="Astronaut" type="CharacterBody2D"]
+[node name="Astronaut" type="CharacterBody2D" groups=["astronaut"]]
 position = Vector2(0, -1)
 script = ExtResource("1_l76db")
 idle_texture = ExtResource("2_m3ec0")
